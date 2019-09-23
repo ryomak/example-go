@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+{{ template "head" . }}
+
+<body >
+{{ template "header" .}}
+<div class="container" >
+<h1>記事一覧</h1>
+{{if .errMsg}}
+<div style="color:red">
+  <p> {{.errMsg}} </p>
+</div>
+{{end}}
+<table class="table" style="width:100%;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Text</th>
+      <th>Create</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range .articles}}
+    <tr>
+      <td>{{.ID}}</td>
+      <td>{{.Text}}</td>
+      <td>{{.CreatedAt}}</td>
+      <td>  <form action="/delete/{{.ID}}" method="post" style="display:inline;" ><button class="button">delete</button></form></td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{ template "footer" .}}
+</body>
+</html>
