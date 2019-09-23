@@ -34,6 +34,12 @@ func (s *Server) PostArticleHandler(c *gin.Context) {
 	c.Request.ParseForm()
 	article := new(model.Article)
 	article.Text = c.Request.Form["text"][0]
+  if article.Text ==""{
+    c.HTML(http.StatusBadRequest, "new.tmpl", gin.H{
+			"errMsg": "テキストが空です",
+		})
+		return
+  }
 	if err := model.PostArticle(s.DB, article); err != nil {
 		c.HTML(http.StatusBadRequest, "new.tmpl", gin.H{
 			"errMsg": "登録できませんでした",

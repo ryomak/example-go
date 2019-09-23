@@ -7,6 +7,11 @@
 {{ template "header" .}}
 <div class="container">
 <h1>投稿</h1>
+  {{if .errMsg}}
+  <div style="color:red">
+    <p> {{.errMsg}} </p>
+  </div>
+  {{end}}
   <form action="new" method="post" style="width:100%;">
     <p>
       <textarea class="textarea" name="text" rows="4" cols="40"></textarea>
