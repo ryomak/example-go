@@ -16,8 +16,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Text</th>
       <th>Create</th>
+      <th>Text</th>
       <th>action</th>
     </tr>
   </thead>
@@ -25,8 +25,8 @@
     {{range .articles}}
     <tr>
       <td>{{.ID}}</td>
+      <td>{{.CreatedAt.Year}}-{{.CreatedAt.Month}}-{{.CreatedAt.Day}}</td>
       <td>{{.Text}}</td>
-      <td>{{.CreatedAt}}</td>
       <td>  <form action="/delete/{{.ID}}" method="post" style="display:inline;" ><button class="button">delete</button></form></td>
     </tr>
     {{end}}
